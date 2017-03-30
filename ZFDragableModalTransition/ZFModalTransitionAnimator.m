@@ -46,6 +46,10 @@
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 }
 
+- (BOOL)isDismissing {
+    return self.isDismiss;
+}
+
 - (void)setDragable:(BOOL)dragable
 {
     _dragable = dragable;
@@ -157,7 +161,7 @@
         if (fromViewController.modalPresentationStyle == UIModalPresentationFullScreen) {
             [containerView addSubview:toViewController.view];
         }
-        
+
         [containerView bringSubviewToFront:fromViewController.view];
 
         if (![self isPriorToIOS8]) {
@@ -239,7 +243,7 @@
             self.panLocationStart = location.x;
         }
         [self.modalController dismissViewControllerAnimated:YES completion:nil];
-        
+
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGFloat animationRatio = 0;
 
@@ -252,7 +256,7 @@
         }
 
         [self updateInteractiveTransition:animationRatio];
-        
+
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
 
         CGFloat velocityForSelectedDirection;
@@ -292,7 +296,7 @@
     self.tempTransform = toViewController.view.layer.transform;
 
     toViewController.view.alpha = self.behindViewAlpha;
-    
+
     if (fromViewController.modalPresentationStyle == UIModalPresentationFullScreen) {
         [[transitionContext containerView] addSubview:toViewController.view];
     }
@@ -380,7 +384,7 @@
     if (fromViewController.modalPresentationStyle == UIModalPresentationCustom) {
         [toViewController beginAppearanceTransition:YES animated:YES];
     }
-    
+
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0
          usingSpringWithDamping:0.8
@@ -403,7 +407,7 @@
 {
     id<UIViewControllerContextTransitioning> transitionContext = self.transitionContext;
     [transitionContext cancelInteractiveTransition];
-    
+
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
@@ -479,7 +483,7 @@
     if (self.gestureRecognizerToFailPan && otherGestureRecognizer && self.gestureRecognizerToFailPan == otherGestureRecognizer) {
         return YES;
     }
-    
+
     return NO;
 }
 
