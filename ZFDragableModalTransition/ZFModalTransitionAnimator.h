@@ -15,12 +15,22 @@ typedef NS_ENUM(NSUInteger, ZFModalTransitonDirection) {
     ZFModalTransitonDirectionRight,
 };
 
+@protocol ZFModalTransitionAnimatorDelegate <NSObject>
+
+@optional
+
+- (void)ZFModalTransitionAnimatorWillAnimateOut;
+- (void)ZFModalTransitionAnimatorDidAnimateOut;
+
+@end
+
 @interface ZFDetectScrollViewEndGestureRecognizer : UIPanGestureRecognizer
 @property (nonatomic, weak) UIScrollView *scrollview;
 @end
 
 @interface ZFModalTransitionAnimator : UIPercentDrivenInteractiveTransition <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate>
 
+@property (weak, nonatomic) id<ZFModalTransitionAnimatorDelegate> delegate;
 @property (nonatomic, assign, getter=isDragable) BOOL dragable;
 @property (nonatomic, readonly) ZFDetectScrollViewEndGestureRecognizer *gesture;
 @property (nonatomic, assign) UIGestureRecognizer *gestureRecognizerToFailPan;
