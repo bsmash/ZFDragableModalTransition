@@ -140,8 +140,8 @@
 
         [UIView animateWithDuration:[self transitionDuration:transitionContext]
                 delay:0
-                usingSpringWithDamping:0.8
-                initialSpringVelocity:0.1
+//                usingSpringWithDamping:0.8
+//                initialSpringVelocity:0.1
                 options:UIViewAnimationOptionCurveEaseOut
                 animations:^{
                     fromViewController.view.transform = CGAffineTransformScale(fromViewController.view.transform, self.behindViewScale, self.behindViewScale);
@@ -198,8 +198,8 @@
 
         [UIView animateWithDuration:[self transitionDuration:transitionContext]
                 delay:0
-                usingSpringWithDamping:0.8
-                initialSpringVelocity:0.1
+//                usingSpringWithDamping:0.8
+//                initialSpringVelocity:0.1
                 options:UIViewAnimationOptionCurveEaseOut
                 animations:^{
                     CGFloat scaleBack = (1 / self.behindViewScale);
@@ -390,8 +390,8 @@
 
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
             delay:0
-            usingSpringWithDamping:0.8
-            initialSpringVelocity:0.1
+//            usingSpringWithDamping:0.8
+//            initialSpringVelocity:0.1
             options:UIViewAnimationOptionCurveEaseOut
             animations:^{
                 CGFloat scaleBack = (1 / self.behindViewScale);
@@ -420,8 +420,8 @@
 
     [UIView animateWithDuration:0.4
             delay:0
-            usingSpringWithDamping:0.8
-            initialSpringVelocity:0.1
+//            usingSpringWithDamping:0.8
+//            initialSpringVelocity:0.1
             options:UIViewAnimationOptionCurveEaseOut
             animations:^{
                 toViewController.view.layer.transform = self.tempTransform;
